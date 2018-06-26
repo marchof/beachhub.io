@@ -1,0 +1,21 @@
+# All interfaces disabled except Ethernet and USB ports
+---
+
+- name: Disable Bluetooth
+  lineinfile:
+    path: /boot/config.txt
+    line: 'dtoverlay=pi3-disable-bt'
+    state: present
+
+- name: Disable WiFi
+  lineinfile:
+    path: /boot/config.txt
+    line: 'dtoverlay=pi3-disable-wifi'
+    state: present
+
+- name: Shutdown HDMI port
+  lineinfile:
+    path: /etc/rc.local
+    line: '/usr/bin/tvservice -o'
+    insertbefore: '^exit'
+    state: present
