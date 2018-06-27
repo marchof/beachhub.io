@@ -1,5 +1,12 @@
 ---
+freshraspberrypi:
+  hosts:
+    # Default name of a fresh raspberry pi
+    raspberrypi
+  vars:
+    ansible_user: pi
 hubservers:
   hosts:
-    beachhub:
-      ansible_host: 192.168.1.2
+    beachhub
+  vars:
+    ansible_user: pi

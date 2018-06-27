@@ -1,6 +1,5 @@
 ---
 - hosts: hubservers
-  remote_user: pi
   become: yes
   roles:
     - headless

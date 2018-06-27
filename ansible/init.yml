@@ -1,0 +1,43 @@
+---
+- hosts: freshraspberrypi
+  vars_prompt:
+    - name: "pi_hostname"
+      prompt: "New pi hostname"
+      private: no
+    - name: "pi_ipaddress"
+      prompt: "New static pi IP address/mask"
+      private: no
+    - name: "pi_password"
+      prompt: "New pi password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+  tasks:
+  - name: Set host name in /etc/hostname
+    become: yes
+    hostname:
+      name: "{{ pi_hostname }}"
+  - name: Set host name in /etc/hosts
+    become: yes
+    lineinfile:
+      dest: /etc/hosts
+      regexp: "^127.0.1.1"
+      line: "127.0.1.1\t{{ pi_hostname }}"
+      state: present
+  - name: Set static IP in /etc/dhcpcd.conf
+    become: yes
+    lineinfile:
+      dest:  /etc/dhcpcd.conf
+      regexp: "{{ item.regexp }}"
+      line: "{{ item.line }}"
+      state: present
+    with_items:
+      - { regexp: "^interface eth0", line: "interface eth0" }
+      - { regexp: "^static ip_address", line: "static ip_address={{ pi_ipaddress }}" }
+      - { regexp: "^static routers", line: "static routers=192.168.1.1" }
+      - { regexp: "^static domain_name_servers", line: "static domain_name_servers=192.168.1.1" }
+  - name: Set a new password pi user
+    become: yes
+    user:
+      name: "pi"
+      password: "{{ pi_password }}"
