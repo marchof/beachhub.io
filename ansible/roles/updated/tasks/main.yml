@@ -1,0 +1,7 @@
+# Make sure all packages are updated
+---
+
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: dist
