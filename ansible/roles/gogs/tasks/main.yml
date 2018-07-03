@@ -1,0 +1,10 @@
+# Install and configure Gogs
+---
+
+- name: Mount data storage on memory stick 
+  mount:
+    path: /data
+    src: LABEL=DATA
+    fstype: auto
+    opts: nofail,umask=000
+    state: present
