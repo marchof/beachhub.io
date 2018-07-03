@@ -36,6 +36,13 @@
       - { regexp: "^static ip_address", line: "static ip_address={{ pi_ipaddress }}" }
       - { regexp: "^static routers", line: "static routers=192.168.1.1" }
       - { regexp: "^static domain_name_servers", line: "static domain_name_servers=192.168.1.1" }
+  - name: Disable DNS lookup on SSH login to avoid delays
+    become: yes
+    lineinfile:
+      dest: /etc/ssh/sshd_config
+      regexp: "UseDNS"
+      line: "UseDNS no"
+      state: present
   - name: Set a new password pi user
     become: yes
     user:
