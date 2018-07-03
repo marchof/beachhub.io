@@ -6,5 +6,10 @@
     path: /data
     src: LABEL=DATA
     fstype: auto
-    opts: nofail,umask=000
+    opts: nofail,uid=pi,gid=pi,umask=0022,sync,auto,nosuid,rw,nouser
+    state: present
+ 
+- name: Ensure git is installed
+  apt:
+    name: git
     state: present
