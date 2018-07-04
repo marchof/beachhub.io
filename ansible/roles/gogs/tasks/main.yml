@@ -1,12 +1,17 @@
 # Install and configure Gogs
 ---
 
+- name: Create Gogs user
+  user:
+    name: "{{ gogs_user }}"
+    home: "{{ gogs_user_home }}"
+
 - name: Mount data storage on memory stick 
   mount:
     path: /data
     src: LABEL=DATA
     fstype: auto
-    opts: nofail,uid=pi,gid=pi,umask=0022,sync,auto,nosuid,rw,nouser
+    opts: nofail,uid=git,gid=git,umask=0022,sync,auto,nosuid,rw,nouser
     state: present
  
 - name: Ensure git is installed
