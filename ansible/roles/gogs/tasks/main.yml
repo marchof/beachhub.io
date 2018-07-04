@@ -13,3 +13,11 @@
   apt:
     name: git
     state: present
+
+- name: Download and install Gogs
+  unarchive:
+    src: "{{ gogs_binary_url }}"
+    dest: .
+    copy: no
+    group: pi
+    owner: pi
