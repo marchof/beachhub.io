@@ -32,3 +32,17 @@
   template:
     src: app.ini
     dest: "{{ gogs_user_home }}/gogs/app.ini"
+
+- name: Add systemd unit file for Gogs
+  template:
+    src: gogs.service
+    dest: /etc/systemd/system/gogs.service
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Run Gogs service
+  service:
+    name: gogs
+    state: started
+    enabled: yes

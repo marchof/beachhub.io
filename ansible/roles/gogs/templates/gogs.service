@@ -1,0 +1,22 @@
+[Unit]
+Description=Gogs
+After=syslog.target
+After=network.target
+
+[Service]
+# Modify these two values and uncomment them if you have
+# repos with lots of files and get an HTTP error 500 because
+# of that
+###
+#LimitMEMLOCK=infinity
+#LimitNOFILE=65535
+Type=simple
+User={{ gogs_user }}
+Group={{ gogs_group }}
+WorkingDirectory={{ gogs_user_home }}
+ExecStart={{ gogs_install_dir }}/gogs web -c {{ gogs_user_home }}/gogs/app.ini
+Restart=always
+Environment=USER={{ gogs_user }} HOME={{ gogs_user_home }}
+
+[Install]
+WantedBy=multi-user.target
