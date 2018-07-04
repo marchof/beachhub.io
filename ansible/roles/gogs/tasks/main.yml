@@ -27,3 +27,8 @@
     dest:  "{{ gogs_install_dir | dirname }}"
     group: root
     owner: root
+
+- name: Write Gogs configuration
+  template:
+    src: app.ini
+    dest: "{{ gogs_user_home }}/gogs/app.ini"
