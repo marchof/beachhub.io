@@ -16,8 +16,9 @@
 
 - name: Download and install Gogs
   unarchive:
+    remote_src: yes
     src: "{{ gogs_binary_url }}"
-    dest: .
-    copy: no
-    group: pi
-    owner: pi
+    creates: "{{ gogs_install_dir }}"
+    dest:  "{{ gogs_install_dir | dirname }}"
+    group: root
+    owner: root
