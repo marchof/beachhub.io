@@ -1,0 +1,5 @@
+---
+tunnel_user: tunnel
+tunnel_group: tunnel
+tunnel_user_home: /home/tunnel
+tunnel_server: 34.248.124.196

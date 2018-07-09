@@ -1,0 +1,12 @@
+[Unit]
+Description=Create a tunnel for inbound HTTP traffic
+After=network.target
+
+[Service]
+Type=simple
+User={{ tunnel_user }}
+Group={{ tunnel_group }}
+ExecStart=/usr/bin/autossh -N -R 80:localhost:8080 root@{{ tunnel_server }}
+
+[Install]
+WantedBy=multi-user.target
