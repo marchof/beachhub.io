@@ -1,9 +1,14 @@
 # Install and configure Gogs
 ---
 
+- name: Create Gogs group
+  group:
+    name: "{{ gogs_group }}"
+
 - name: Create Gogs user
   user:
     name: "{{ gogs_user }}"
+    group: "{{ gogs_group }}"
     home: "{{ gogs_user_home }}"
 
 - name: Mount data storage on memory stick 
