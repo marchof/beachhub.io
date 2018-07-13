@@ -1,0 +1,12 @@
+# Install Java 10
+---
+
+- name: Download and install Java
+  unarchive:
+    remote_src: yes
+    src: "{{ java_binary_url }}"
+    creates: "{{ java_install_dir }}"
+    dest:  "{{ java_install_dir | dirname }}"
+    group: root
+    owner: root
+
