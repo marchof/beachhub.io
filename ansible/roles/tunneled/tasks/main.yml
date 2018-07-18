@@ -14,6 +14,12 @@
     ssh_key_type: rsa
     ssh_key_bits: 4096
 
+- name: Add tunnel server to known hosts 
+  known_hosts:
+    path: "/home/{{ tunnel_user }}/.ssh/known_hosts"
+    name: "{{ tunnel_server }}"
+    key: "{{ tunnel_server }} {{ tunnel_server_host_key_algo }} {{ tunnel_server_host_key }}"
+
 - name: Install autossh
   apt:
     name: autossh

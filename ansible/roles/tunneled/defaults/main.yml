@@ -3,3 +3,5 @@ tunnel_user: tunnel
 tunnel_group: tunnel
 tunnel_user_home: /home/tunnel
 tunnel_server: jcrete.beachhub.io
+tunnel_server_host_key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDbwBF979vRrq9zPSAf7136r+7TtRUo5gcEuAXU+DaOQ4HBcaaKs1kkcScLqVw5GgEmQ2mrhBWXMYKvnSX6vdJQ=
+tunnel_server_host_key_algo: ecdsa-sha2-nistp256
