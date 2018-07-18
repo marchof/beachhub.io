@@ -33,6 +33,12 @@
     group: root
     owner: root
 
+- name: Create Gogs config dir
+  file: 
+    path: "{{ gogs_user_home }}/gogs"
+    state: directory
+    recurse: yes
+
 - name: Write Gogs configuration
   template:
     src: app.ini
