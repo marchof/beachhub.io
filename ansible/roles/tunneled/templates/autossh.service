@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User={{ tunnel_user }}
 Group={{ tunnel_group }}
-ExecStart=/usr/bin/autossh -N -R 80:localhost:8080 root@{{ tunnel_server }}
+ExecStart=/usr/bin/autossh -N -R 3000:localhost:3000 ec2-user@{{ tunnel_server }}
 
 [Install]
 WantedBy=multi-user.target
