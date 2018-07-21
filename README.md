@@ -9,3 +9,4 @@ Solar powered Git Repository and CI Server for beach usage built for the
 * [Router Setup](doc/router.md)
 * [System Setup](doc/setup.md)
 
+![JCrete Setup](doc/jcrete-setup.jpg)
