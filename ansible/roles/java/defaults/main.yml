@@ -1,0 +1,3 @@
+---
+java_binary_url: https://github.com/bell-sw/Liberica/releases/download/11/bellsoft-jdk11-linux-arm32-vfp-hflt.tar.gz
+java_install_dir: /opt/jdk-11

@@ -4,6 +4,6 @@
   roles:
     - headless
     - updated
-    - java10
+    - java
     - gogs
     - tunneled
