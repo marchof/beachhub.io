@@ -26,10 +26,15 @@ module flap(width) {
     }
 }
 
-module base(width, length) {
+module base(width, length, height) {
   flap(width);
   translate([length - 20 , 0, 0]) mirror([1,0,0]) flap(width);
-  translate([-10.0, -3.0, 0.0]) cube([length, 3.0, width]);
+  hull() {
+    translate([length - 12.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=height, r=2.0);
+    translate([-8.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=height, r=2.0);
+    translate([-8.0, 0.0, width - 2.0]) rotate([90, 0, 0]) cylinder(h=height, r=2.0);
+    translate([length - 12.0, 0.0, width - 2.0]) rotate([90, 0, 0]) cylinder(h=height, r=2.0);
+  }
   translate([0.0, 0.0, 0.0]) cube([length - 20.0, 4.0, 2.0]);
   translate([0.0, 0.0, width - 2.0]) cube([length - 20.0, 4.0, 2.0]);
   translate([-6.4, 0.0, 1.0]) cube([2.8, 2.0, width - 2.0]);
@@ -39,15 +44,7 @@ module base(width, length) {
 module piholder() {
   color("Blue") {
     difference() {
-      group() {
-        base(35, 100);
-        hull() {
-          translate([88.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([-8.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([-8.0, 0.0, 33.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([88.0, 0.0, 33.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-        }
-      }
+      base(35, 100, 25);
       group() {
         translate([ -2.5, -27.0,  6.0]) cube([85.5, 25.0, 22.0]);
         translate([1.5, -28.0, -2.0]) cube([56.0, 25.0, 40.0]);
@@ -73,15 +70,7 @@ module piholder() {
 module ssdholder() {
   color("Blue") {
     difference() {
-      group() {
-        base(25, 100);
-        hull() {
-          translate([88.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([-8.0, 0.0, 2.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([-8.0, 0.0, 23.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-          translate([88.0, 0.0, 23.0]) rotate([90, 0, 0]) cylinder(h=25.0, r=2.0);
-        }
-      }
+      base(25, 100, 25);
       group() {
         translate([2.0, -8.0, 12.5]) ssd();
         translate([10.0, -37.0, -2.5]) cube([60.0, 30.0, 30.0]);
@@ -100,6 +89,7 @@ module ssdholder() {
 
 }
 
+
 translate([-10, 0, 0]) beam(200);
 translate([80, 0, 0]) beam(200);
 
@@ -115,14 +105,10 @@ translate([0, 0, 55]) {
     translate([2.0, -8.0, 12.5]) ssd();
 }
 
-    
+
 translate([0, 0, 155]) piholder();
 translate([50.0, -30.0, 68.0]) {
     //coolingcase();
     //pi4();
 }
-
-
-
-
 
