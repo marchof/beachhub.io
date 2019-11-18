@@ -27,3 +27,22 @@ used in BeachHub with the USB tester:
  
 If the voltage is decreased by more that 0.2V or the voltage measured in step 3
 is less than 4.8V you can't run a Raspberry Pi reliable on this cable.
+
+## Under Voltage
+
+If the supplied voltage is too low the CPU gets throttled. With the following command you can check whether this or was the case:
+
+    vcgencmd get_throttled
+    
+The bits in the returned integer have the following meanings:
+
+| Bit | Meaning |
+|:---:|---------|
+| 0   | Under-voltage detected |
+| 1   | Arm frequency capped |
+| 2   | Currently throttled |
+| 3   | Soft temperature limit active |
+| 16  | Under-voltage has occurred |
+| 17  | Arm frequency capped has occurred |
+| 18  | Throttling has occurred |
+| 19  | Soft temperature limit has occurred |
