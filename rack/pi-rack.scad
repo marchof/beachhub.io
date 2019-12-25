@@ -7,6 +7,7 @@ $fa = 5;    // Don't generate larger angles than 5 degrees
 use <raspberrypi.scad>;
 use <coolingcase.scad>;
 use <ssd.scad>;
+use <sdr.scad>;
 
 module beam(length) {
     color("Gray")
@@ -85,8 +86,55 @@ module ssdholder() {
       }
     }
   }
+}
 
+module sdrholder() {
+  color("Blue") {
+    difference() {
+      base(26, 100, 25);
+      group() {
+        translate([10.5, -28.0,  6.0]) cube([61.0, 17.0, 14.0]);
+        // fixation
+        translate([40.5, -28.0, 2.0]) cube([5.0, 30.0, 2.0]);
+        translate([40.5, -28.0, 22.0]) cube([5.0, 30.0, 2.0]);
+        // connectors
+        translate([-15.0, -29.0, 8.0]) cube([110.0, 17.0, 10.0]);
+        // cooling
+        translate([12.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);
+        translate([12.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([16.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([16.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([20.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([20.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([24.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([24.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([28.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([28.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([32.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([32.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([36.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([36.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);
+   
+        translate([40.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);
+        translate([44.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);
+   
+        translate([48.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([48.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([52.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([52.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([56.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([56.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([60.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([60.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([64.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([64.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
+        translate([68.0, -34.0, -2.0]) cube([2.0, 30.0, 30.0]);        
+        translate([68.0, -8.0,   9.0]) cube([2.0, 10.0, 8.0]);      
 
+        translate([12.0, -12.0, 13.0]) rotate([0, 90, 0]) cylinder(h=58.0, r=5);
+      }
+    }
+  }
 }
 
 
@@ -100,15 +148,13 @@ translate([40.0, -30.0, 33.0]) {
     pi4();
 }
 
-translate([0, 0, 55]) {
+translate([0, 0, 80]) {
     ssdholder();
     translate([2.0, -8.0, 12.5]) ssd();
 }
 
-
-translate([0, 0, 155]) piholder();
-translate([50.0, -30.0, 68.0]) {
-    //coolingcase();
-    //pi4();
+translate([0, 0, 130]) {
+    sdrholder();
+    sdr();
 }
 
